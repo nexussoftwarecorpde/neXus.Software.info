@@ -7,26 +7,45 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     html { scroll-behavior: smooth; }
-
+    
     /* Dunkler Hintergrund */
     body {
       background-color: #1a1a1a; /* Dunklerer Hintergrund */
-      overflow: hidden; /* Verhindert das Scrollen aufgrund von Schildern */
+      overflow: hidden; /* Verhindert das Scrollen aufgrund der Schilder */
     }
 
-    /* Viele kleine gebrochene Schilder im Hintergrund */
-    .broken-shield {
+    /* Hintergrundcontainer für gebrochene Schilder */
+    .shield-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none; /* Verhindert Interaktionen mit den Schildern */
+      z-index: -1; /* Schilder sind im Hintergrund */
+    }
+
+    /* Gebrochene Schilder als CSS-Div-Elemente */
+    .shield-container .shield {
       position: absolute;
-      width: 100px;
-      height: 40px;
-      background-color: rgba(255, 0, 0, 0.7); /* Rote Farbe */
+      width: 120px;
+      height: 60px;
+      background: rgba(255, 0, 0, 0.3); /* Blasseres Rot für den gebrochenen Look */
       border-radius: 5px;
-      box-shadow: 0 0 10px rgba(255, 0, 0, 0.6); /* Glow-Effekt */
-      transform: rotate(-15deg); /* Gebrochene, schräg stehende Schilder */
-      animation: moveShields 10s linear infinite;
+      box-shadow: 0 0 15px rgba(255, 0, 0, 0.6); /* Roter Glow-Effekt */
+      transform: rotate(-25deg); /* Gebrochene, schräg stehende Schilder */
+      opacity: 0.3; /* Blassere Schilder */
+      animation: glow 2s ease-in-out infinite, moveShields 10s linear infinite; /* Animation */
     }
 
-    /* Animation für die Schilder, um sie zu bewegen und zufällig zu positionieren */
+    /* Animation für den Glow-Effekt */
+    @keyframes glow {
+      0% { box-shadow: 0 0 10px rgba(255, 0, 0, 0.6); }
+      50% { box-shadow: 0 0 20px rgba(255, 0, 0, 1); }
+      100% { box-shadow: 0 0 10px rgba(255, 0, 0, 0.6); }
+    }
+
+    /* Bewegung der Schilder im Hintergrund */
     @keyframes moveShields {
       0% {
         top: -100px;
@@ -38,42 +57,15 @@
       }
     }
 
-    /* Generieren vieler Schilder im Hintergrund */
-    .shield-container {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none; /* Verhindert Interaktion mit den Schildern */
-    }
-
-    /* Erstellung der Schilder */
-    .shield-container .shield {
-      position: absolute;
-      width: 100px;
-      height: 40px;
-      background-color: rgba(255, 0, 0, 0.7); /* Rote Farbe */
-      border-radius: 5px;
-      box-shadow: 0 0 10px rgba(255, 0, 0, 0.6); /* Glow-Effekt */
-      transform: rotate(-15deg); /* Gebrochene, schräg stehende Schilder */
-      animation: glow 2s ease-in-out infinite;
-    }
-
-    @keyframes glow {
-      0% { box-shadow: 0 0 10px rgba(255, 0, 0, 0.6); }
-      50% { box-shadow: 0 0 20px rgba(255, 0, 0, 1); }
-      100% { box-shadow: 0 0 10px rgba(255, 0, 0, 0.6); }
-    }
-
-    /* Generiert zufällige Positionen für die Schilder */
-    .shield-container .shield:nth-child(1) { top: 10%; left: 15%; animation-duration: 8s; }
-    .shield-container .shield:nth-child(2) { top: 30%; left: 25%; animation-duration: 9s; }
-    .shield-container .shield:nth-child(3) { top: 50%; left: 35%; animation-duration: 7s; }
-    .shield-container .shield:nth-child(4) { top: 20%; left: 50%; animation-duration: 6s; }
-    .shield-container .shield:nth-child(5) { top: 40%; left: 60%; animation-duration: 10s; }
-    .shield-container .shield:nth-child(6) { top: 60%; left: 70%; animation-duration: 5s; }
-    .shield-container .shield:nth-child(7) { top: 80%; left: 80%; animation-duration: 4s; }
+    /* Zufällige Positionierung der Schilder */
+    .shield-container .shield:nth-child(1) { top: 15%; left: 10%; animation-duration: 12s; }
+    .shield-container .shield:nth-child(2) { top: 25%; left: 40%; animation-duration: 14s; }
+    .shield-container .shield:nth-child(3) { top: 50%; left: 70%; animation-duration: 16s; }
+    .shield-container .shield:nth-child(4) { top: 5%; left: 80%; animation-duration: 18s; }
+    .shield-container .shield:nth-child(5) { top: 35%; left: 55%; animation-duration: 20s; }
+    .shield-container .shield:nth-child(6) { top: 70%; left: 30%; animation-duration: 22s; }
+    .shield-container .shield:nth-child(7) { top: 80%; left: 60%; animation-duration: 25s; }
+    .shield-container .shield:nth-child(8) { top: 60%; left: 10%; animation-duration: 28s; }
 
   </style>
 </head>
@@ -81,6 +73,7 @@
 
   <!-- Schilder im Hintergrund -->
   <div class="shield-container">
+    <div class="shield"></div>
     <div class="shield"></div>
     <div class="shield"></div>
     <div class="shield"></div>
