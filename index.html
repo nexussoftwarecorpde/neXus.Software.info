@@ -7,9 +7,43 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
     html { scroll-behavior: smooth; }
+
+    /* Hintergrunddunkelung mit gebrochenen Schildern */
+    body {
+      background-color: #1a1a1a; /* Dunklerer Hintergrund */
+      background-image: url('https://www.transparenttextures.com/patterns/black-twill.png'), url('https://your-image-url.com'); /* Beispiel für Textur + Bild */
+      background-size: cover, auto;
+      background-blend-mode: multiply;
+    }
+
+    /* Gebrochene Schilder (roter Glow-Effekt) */
+    .broken-shield {
+      position: absolute;
+      top: 10%;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: -1;
+      opacity: 0.2;
+      pointer-events: none;
+      width: 200px;
+      height: 200px;
+      background: url('https://your-shield-image-url.com') no-repeat center center;
+      background-size: contain;
+      box-shadow: 0 0 10px rgba(255, 0, 0, 0.6);
+      animation: glow 2s ease-in-out infinite;
+    }
+
+    @keyframes glow {
+      0% { box-shadow: 0 0 10px rgba(255, 0, 0, 0.6); }
+      50% { box-shadow: 0 0 20px rgba(255, 0, 0, 1); }
+      100% { box-shadow: 0 0 10px rgba(255, 0, 0, 0.6); }
+    }
   </style>
 </head>
 <body class="bg-gray-950 text-gray-200 font-sans">
+
+  <!-- Gebrochenes Schild im Hintergrund -->
+  <div class="broken-shield"></div>
 
   <!-- Header -->
   <header class="bg-gray-900 shadow-md sticky top-0 z-50">
@@ -59,9 +93,7 @@
   <section id="license" class="py-12 px-4 max-w-3xl mx-auto mt-16 bg-gray-900 rounded-xl shadow-inner">
     <h2 class="text-2xl font-semibold mb-4 text-cyan-300 text-center">Lizenz</h2>
     <p class="text-gray-400 text-center">
-      Diese Software und PräsentatioCopyright © 2024 neXus Software
-
-Diese Software und Inhalte sind urheberrechtlich geschützt. Die Nutzung, Vervielfältigung, Verbreitung oder Modifikation ist ohne ausdrückliche schriftliche Genehmigung von neXus Software nicht gestattet. Alle Rechte vorbehalten.
+      Diese Software und Präsentation sind urheberrechtlich geschützt. Alle Rechte vorbehalten. Verbreitung nur mit schriftlicher Genehmigung.
     </p>
   </section>
 
