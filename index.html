@@ -6,120 +6,165 @@
   <title>neXus Software</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
-    html { scroll-behavior: smooth; }
-    
-    /* Dunkler Hintergrund */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Dunklerer Hintergrund */
     body {
-      background-color: #1a1a1a; /* Dunklerer Hintergrund */
-      overflow: hidden; /* Verhindert das Scrollen aufgrund der Schilder */
+      background-color: #121212; /* Dunklerer Hintergrund für den gesamten Body */
+      color: #e5e5e5; /* Helle Schrift für den Inhalt */
+      font-family: 'Arial', sans-serif;
     }
 
-    /* Hintergrundcontainer für gebrochene Schilder */
-    .shield-container {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none; /* Verhindert Interaktionen mit den Schildern */
-      z-index: -1; /* Schilder sind im Hintergrund */
+    /* Header Styling */
+    header {
+      background-color: #1a1a1a; /* Dunkler Hintergrund für den Header */
+      padding: 20px 0;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Schattierung für den Header */
     }
 
-    /* Gebrochene Schilder als CSS-Div-Elemente */
-    .shield-container .shield {
-      position: absolute;
+    /* Logo Styling */
+    header img {
       width: 120px;
-      height: 60px;
-      background: rgba(255, 0, 0, 0.3); /* Blasseres Rot für den gebrochenen Look */
-      border-radius: 5px;
-      box-shadow: 0 0 15px rgba(255, 0, 0, 0.6); /* Roter Glow-Effekt */
-      transform: rotate(-25deg); /* Gebrochene, schräg stehende Schilder */
-      opacity: 0.3; /* Blassere Schilder */
-      animation: glow 2s ease-in-out infinite, moveShields 10s linear infinite; /* Animation */
+      height: 120px;
+      border-radius: 50%;
+      border: 3px solid #ff4d4d; /* Roter Rand um das Logo */
+      margin-bottom: 10px;
     }
 
-    /* Animation für den Glow-Effekt */
-    @keyframes glow {
-      0% { box-shadow: 0 0 10px rgba(255, 0, 0, 0.6); }
-      50% { box-shadow: 0 0 20px rgba(255, 0, 0, 1); }
-      100% { box-shadow: 0 0 10px rgba(255, 0, 0, 0.6); }
+    header h1 {
+      font-size: 3rem;
+      font-weight: bold;
+      color: #ff4d4d; /* Rote Schrift für den Titel */
     }
 
-    /* Bewegung der Schilder im Hintergrund */
-    @keyframes moveShields {
-      0% {
-        top: -100px;
-        left: -100px;
-      }
-      100% {
-        top: 100vh;
-        left: 100vw;
-      }
+    /* Über uns Sektion */
+    section#about {
+      padding: 60px 20px;
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto;
     }
 
-    /* Zufällige Positionierung der Schilder */
-    .shield-container .shield:nth-child(1) { top: 15%; left: 10%; animation-duration: 12s; }
-    .shield-container .shield:nth-child(2) { top: 25%; left: 40%; animation-duration: 14s; }
-    .shield-container .shield:nth-child(3) { top: 50%; left: 70%; animation-duration: 16s; }
-    .shield-container .shield:nth-child(4) { top: 5%; left: 80%; animation-duration: 18s; }
-    .shield-container .shield:nth-child(5) { top: 35%; left: 55%; animation-duration: 20s; }
-    .shield-container .shield:nth-child(6) { top: 70%; left: 30%; animation-duration: 22s; }
-    .shield-container .shield:nth-child(7) { top: 80%; left: 60%; animation-duration: 25s; }
-    .shield-container .shield:nth-child(8) { top: 60%; left: 10%; animation-duration: 28s; }
+    section#about h2 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: #ff4d4d; /* Rote Farbe für die Überschrift */
+    }
 
+    section#about p {
+      font-size: 1.2rem;
+      line-height: 1.8;
+      color: #d1d1d1;
+      margin-bottom: 20px;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      margin: 15px 10px;
+      padding: 12px 24px;
+      background-color: #ff4d4d; /* Roter Hintergrund für die Buttons */
+      color: #fff;
+      font-weight: 600;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #e63946; /* Dunkleres Rot beim Hover */
+    }
+
+    /* Kontakt Sektion */
+    section#contact {
+      background-color: #1e1e1e;
+      padding: 40px 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    section#contact h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #ff4d4d; /* Rote Überschrift */
+    }
+
+    section#contact ul {
+      list-style: none;
+      padding: 0;
+      color: #d1d1d1;
+    }
+
+    section#contact li {
+      margin-bottom: 15px;
+      font-size: 1.1rem;
+    }
+
+    /* Lizenz Sektion */
+    section#license {
+      padding: 40px 20px;
+      background-color: #1e1e1e;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+      margin-top: 60px;
+    }
+
+    section#license h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #ff4d4d; /* Rote Lizenz-Überschrift */
+    }
+
+    section#license p {
+      color: #d1d1d1;
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    /* Footer Styling */
+    footer {
+      background-color: #1a1a1a;
+      padding: 15px;
+      text-align: center;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      font-size: 0.9rem;
+      color: #d1d1d1;
+      border-top: 2px solid #ff4d4d; /* Roter Rand im Footer */
+    }
+
+    footer span {
+      color: #ff4d4d; /* Rote Schrift im Footer */
+    }
   </style>
 </head>
-<body class="bg-gray-950 text-gray-200 font-sans">
-
-  <!-- Schilder im Hintergrund -->
-  <div class="shield-container">
-    <div class="shield"></div>
-    <div class="shield"></div>
-    <div class="shield"></div>
-    <div class="shield"></div>
-    <div class="shield"></div>
-    <div class="shield"></div>
-    <div class="shield"></div>
-    <div class="shield"></div>
-  </div>
+<body>
 
   <!-- Header -->
-  <header class="bg-gray-900 shadow-md sticky top-0 z-50">
-    <div class="max-w-6xl mx-auto flex flex-col items-center justify-center p-6">
-      <!-- Logo zentriert -->
-      <img src="file_000000004f0061f4912505d0115a7495.png" alt="Logo" class="w-20 h-20 rounded-full border-2 border-cyan-400 mb-2">
-      <h1 class="text-3xl font-bold text-cyan-400 text-center">neXus Software</h1>
-    </div>
+  <header>
+    <img src="file_000000004f0061f4912505d0115a7495.png" alt="neXus Software Logo">
+    <h1>neXus Software</h1>
   </header>
 
-  <!-- Über Uns -->
-  <section id="about" class="py-16 px-4 max-w-4xl mx-auto text-center">
-    <h2 class="text-3xl font-bold mb-4 text-cyan-300">Über Uns</h2>
-    <p class="text-gray-300 leading-relaxed">
-      neXus Software ist ein kleines, aber hochspezialisiertes IT-Sicherheitsunternehmen mit einer engagierten Gruppe von sechs Fachleuten. Wir konzentrieren uns auf fortschrittliche IT-Sicherheit und bieten maßgeschneiderte Lösungen für Unternehmen und Einzelpersonen. Unser Team ist auf die Analyse von Schwachstellen und Sicherheitslücken in Systemen spezialisiert, insbesondere durch Reverse Engineering, Social Engineering und den Einsatz von Tools wie Metasploit.
-    </p>
-    <p class="text-gray-300 leading-relaxed mt-4">
-      Zusätzlich sind wir auf <strong>Denial of Service (DoS)</strong>-Angriffe spezialisiert, wobei wir leistungsstarke Botnets nutzen, um Angriffsszenarien realistisch zu simulieren und Sicherheitslücken aufzuzeigen. Unsere Expertise reicht jedoch weit über offensive Maßnahmen hinaus – wir bieten auch umfassende Softwarelösungen, die speziell entwickelt wurden, um Geräte und Software vor externen Bedrohungen zu schützen.
-    </p>
-    <p class="text-gray-300 leading-relaxed mt-4">
-      Unser Ziel ist es, nicht nur Sicherheitslücken zu erkennen, sondern auch die nötigen Werkzeuge und Schutzmechanismen zu entwickeln, die Unternehmen und Organisationen in die Lage versetzen, sich gegen die ständig wachsenden Bedrohungen im digitalen Raum zu verteidigen.
-    </p>
+  <!-- Über Uns Sektion -->
+  <section id="about">
+    <h2>Über Uns</h2>
+    <p>neXus Software ist ein kleines, aber hochspezialisiertes IT-Sicherheitsunternehmen, das sich auf Reverse Engineering, Social Engineering, Metasploit-Exploits und Denial of Service (DoS) Angriffe mit Botnets spezialisiert hat. Wir bieten außerdem maßgeschneiderte Softwarelösungen zum Schutz von Geräten und Anwendungen gegen Cyber-Bedrohungen.</p>
   </section>
 
   <!-- Buttons -->
-  <section class="text-center mb-24">
-    <a href="#contact" class="inline-block m-4 px-6 py-3 bg-cyan-600 hover:bg-cyan-500 text-white font-semibold rounded-lg transition">
-      Kontaktinformationen
-    </a>
-    <a href="#license" class="inline-block m-4 px-6 py-3 bg-cyan-600 hover:bg-cyan-500 text-white font-semibold rounded-lg transition">
-      Lizenz
-    </a>
+  <section class="text-center">
+    <a href="#contact" class="btn">Kontaktinformationen</a>
+    <a href="#license" class="btn">Lizenz</a>
   </section>
 
-  <!-- Kontaktinfos -->
-  <section id="contact" class="py-12 px-4 max-w-3xl mx-auto bg-gray-900 rounded-xl shadow-inner">
-    <h2 class="text-2xl font-semibold mb-6 text-cyan-300 text-center">Kontakt</h2>
-    <ul class="text-gray-300 space-y-2 text-center">
+  <!-- Kontakt Sektion -->
+  <section id="contact">
+    <h2>Kontakt</h2>
+    <ul>
       <li><strong>Telefon:</strong> +49 69 12345678</li>
       <li><strong>Fax:</strong> +49 69 87654321</li>
       <li><strong>Email:</strong> kontakt@nexus-software.de</li>
@@ -127,17 +172,15 @@
     </ul>
   </section>
 
-  <!-- Lizenz -->
-  <section id="license" class="py-12 px-4 max-w-3xl mx-auto mt-16 bg-gray-900 rounded-xl shadow-inner">
-    <h2 class="text-2xl font-semibold mb-4 text-cyan-300 text-center">Lizenz</h2>
-    <p class="text-gray-400 text-center">
-      Diese Software und Präsentation sind urheberrechtlich geschützt. Alle Rechte vorbehalten. Verbreitung nur mit schriftlicher Genehmigung.
-    </p>
+  <!-- Lizenz Sektion -->
+  <section id="license">
+    <h2>Lizenz</h2>
+    <p>Alle Rechte an der Software und dem Design dieser Website sind urheberrechtlich geschützt. Vervielfältigung, Veränderung oder die Verwendung der Software ohne ausdrückliche Genehmigung ist verboten.</p>
   </section>
 
-  <!-- Footer (fixiert) -->
-  <footer class="fixed bottom-0 w-full bg-gray-900 text-gray-500 text-sm text-center py-2 border-t border-gray-700">
-    Powered by <span class="text-cyan-400 font-semibold">neXus Software</span> &copy;2024 Frankfurt a. Main 60433
+  <!-- Footer -->
+  <footer>
+    Powered by <span>neXus Software</span> &copy;2024 Frankfurt a. Main 60433
   </footer>
 
 </body>
